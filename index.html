@@ -351,7 +351,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/02/java-nio源码分析/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/20/ThreadLocal-使用和源码分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="starryfei">
@@ -371,7 +371,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/07/02/java-nio源码分析/" class="post-title-link" itemprop="url">java nio源码分析</a>
+                <a href="/2019/06/20/ThreadLocal-使用和源码分析/" class="post-title-link" itemprop="url">ThreadLocal 使用和源码分析</a>
               
             
           </h1>
@@ -396,12 +396,46 @@
                 
               
 
-              <time title="Created: 2019-07-02 17:45:21" itemprop="dateCreated datePublished" datetime="2019-07-02T17:45:21+08:00">2019-07-02</time>
+              <time title="Created: 2019-06-20 18:59:26" itemprop="dateCreated datePublished" datetime="2019-06-20T18:59:26+08:00">2019-06-20</time>
             
 
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-02 19:36:57" itemprop="dateModified" datetime="2019-07-02T19:36:57+08:00">2019-07-02</time>
+              
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/源码/" itemprop="url" rel="index"><span itemprop="name">源码</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -432,9 +466,16 @@
 
       
         
+          <h3 id="线程本地存储"><a href="#线程本地存储" class="headerlink" title="线程本地存储"></a>线程本地存储</h3><p><strong>线程本地存储</strong>为使用相同变量的每个不同的线程创建不同的存储，例如有 5 个线程都要使用变量 local所表示的对象，那么本地线程存储就会生成 5 个用于 local 的不同的存储块，它可以使状态和线程关联起来, 总而言之就是: 保存线程上下文信息，在该线程任意需要的地方可以获取.</p>
+          <!--noindex-->
           
-            
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/06/20/ThreadLocal-使用和源码分析/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
@@ -489,7 +530,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/02/分析Executors导致OOM/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/20/分析Executors导致OOM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="starryfei">
@@ -509,7 +550,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/07/02/分析Executors导致OOM/" class="post-title-link" itemprop="url">分析Executors导致OOM</a>
+                <a href="/2019/06/20/分析Executors导致OOM/" class="post-title-link" itemprop="url">分析Executors导致OOM</a>
               
             
           </h1>
@@ -534,12 +575,24 @@
                 
               
 
-              <time title="Created: 2019-07-02 17:44:57 / Modified: 17:58:48" itemprop="dateCreated datePublished" datetime="2019-07-02T17:44:57+08:00">2019-07-02</time>
+              <time title="Created: 2019-06-20 18:44:57" itemprop="dateCreated datePublished" datetime="2019-06-20T18:44:57+08:00">2019-06-20</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-02 19:33:39" itemprop="dateModified" datetime="2019-07-02T19:33:39+08:00">2019-07-02</time>
               
             
           </span>
@@ -556,7 +609,368 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/源码/" itemprop="url" rel="index"><span itemprop="name">源码</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h3><p>Java API中提供了一个创建线程池的工厂类<strong>Executors</strong>，但是在阿里Java规范中描述</p>
+<blockquote>
+<p>【强制】线程池不允许使用Executors去创建，而是通过ThreadPoolExecutor的方式，这 样的处理方式让写的同学更加明确线程池的运行规则，规避资源耗尽的风险。 说明:Executors 返回的线程池对象的弊端如下:<br>FixedThreadPool 和SingleThreadPool: nteger.MAX_VALUE，允许请求的队列长度为 Integer.MAX_VALUE，可能会堆积大量的请求，从而导致 OOM。<br>CachedThreadPool:<br>允许创建线程的数量为Integer.MAX_VALUE，可能会创建大量的线程，从而导致 OOM。</p>
+</blockquote>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/06/20/分析Executors导致OOM/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/18/基于RESP实现Java-redis客户端/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="starryfei">
+      <meta itemprop="description" content="喵星人学习记录">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/16641113?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="喵星人🐱">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/06/18/基于RESP实现Java-redis客户端/" class="post-title-link" itemprop="url">基于RESP实现Java-redis客户端</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-18 21:43:58" itemprop="dateCreated datePublished" datetime="2019-06-18T21:43:58+08:00">2019-06-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-02 19:36:51" itemprop="dateModified" datetime="2019-07-02T19:36:51+08:00">2019-07-02</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/开源/" itemprop="url" rel="index"><span itemprop="name">开源</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="RESP介绍"><a href="#RESP介绍" class="headerlink" title="RESP介绍"></a>RESP介绍</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p><strong>RESP</strong>(REdis Serialization Protocol) 是Redis提供的文本协议，协议中 所有发送至 Redis 服务器的参数都是二进制安全（binary safe）,Redis Client 通过TCP来建立与 Redis Server 的连接，默认端口号6379。</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/06/18/基于RESP实现Java-redis客户端/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/02/fastsky-http-实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="starryfei">
+      <meta itemprop="description" content="喵星人学习记录">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/16641113?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="喵星人🐱">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/02/fastsky-http-实现/" class="post-title-link" itemprop="url">fastsky-http 实现</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-02 22:30:02" itemprop="dateCreated datePublished" datetime="2019-01-02T22:30:02+08:00">2019-01-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-02 19:41:33" itemprop="dateModified" datetime="2019-07-02T19:41:33+08:00">2019-07-02</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/开源/" itemprop="url" rel="index"><span itemprop="name">开源</span></a></span>
 
                 
                 
@@ -593,573 +1007,40 @@
       
         
           
-            
+            <p>
+              fastsky-http简介基于Netty http实现的简单的web框架
+项目概述
+ 支持消息路由
+
+ bean的集中管理
+
+ 支持注解
+
+ 配置文件的读取
+
+ 切面
+
+ 支持多种响应方式(json,html,text)
+
+ 模板引擎支持
+
+ 支持netty https/http
+
+
+
+设计思路
+
+              ...
+            </p>
+          <!--noindex-->
           
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/02/ThreadLocal-使用和源码分析/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="starryfei">
-      <meta itemprop="description" content="喵星人学习记录">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/16641113?s=460&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="喵星人🐱">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/02/ThreadLocal-使用和源码分析/" class="post-title-link" itemprop="url">ThreadLocal 使用和源码分析</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-07-02 17:44:26" itemprop="dateCreated datePublished" datetime="2019-07-02T17:44:26+08:00">2019-07-02</time>
-            
-
-            
-          </span>
-
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/01/02/fastsky-http-实现/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
           
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/02/基于RESP实现Java-redis客户端/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="starryfei">
-      <meta itemprop="description" content="喵星人学习记录">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/16641113?s=460&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="喵星人🐱">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/02/基于RESP实现Java-redis客户端/" class="post-title-link" itemprop="url">基于RESP实现Java-redis客户端</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-07-02 17:43:58" itemprop="dateCreated datePublished" datetime="2019-07-02T17:43:58+08:00">2019-07-02</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/02/fastsky-http-实现/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="starryfei">
-      <meta itemprop="description" content="喵星人学习记录">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/16641113?s=460&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="喵星人🐱">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/02/fastsky-http-实现/" class="post-title-link" itemprop="url">fastsky-http 实现</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-07-02 17:43:29" itemprop="dateCreated datePublished" datetime="2019-07-02T17:43:29+08:00">2019-07-02</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/14/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="starryfei">
-      <meta itemprop="description" content="喵星人学习记录">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/16641113?s=460&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="喵星人🐱">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/06/14/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-06-14 18:55:51" itemprop="dateCreated datePublished" datetime="2019-06-14T18:55:51+08:00">2019-06-14</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
+          <!--/noindex-->
         
       
     </div>
@@ -1243,7 +1124,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1255,12 +1136,20 @@
                 <div class="site-state-item site-state-categories">
                   
                     
+                      <a href="/categories/">
+                    
+                  
+                    
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">categories</span>
-                  
+                  </a>
                 </div>
               
 
@@ -1270,14 +1159,24 @@
                 <div class="site-state-item site-state-tags">
                   
                     
+                      <a href="/tags/">
                     
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">2</span>
-                    <span class="site-state-item-name">tags</span>
                   
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
                 </div>
               
             </nav>
