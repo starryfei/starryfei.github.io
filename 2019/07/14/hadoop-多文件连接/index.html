@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="数据集数据集下载   来源 下载解压完的数据格式为tsv,类似csv,里面的数据是按照TAB来分隔的 123omniture-logs.tsv: 浏览日志(67M)products.tsv：商品信息(12kb)users.tsv：用户信息(2M)  数据格式users.tsv   SWID（用户ID） BIRTH_DT（出生日期） GENDER_CD（性别）    0001BDD9-EABF-4D">
+<meta name="keywords" content="hadoop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hadoop 多文件连接">
+<meta property="og:url" content="http://yoursite.com/2019/07/14/hadoop-多文件连接/index.html">
+<meta property="og:site_name" content="喵星人🐱">
+<meta property="og:description" content="数据集数据集下载   来源 下载解压完的数据格式为tsv,类似csv,里面的数据是按照TAB来分隔的 123omniture-logs.tsv: 浏览日志(67M)products.tsv：商品信息(12kb)users.tsv：用户信息(2M)  数据格式users.tsv   SWID（用户ID） BIRTH_DT（出生日期） GENDER_CD（性别）    0001BDD9-EABF-4D">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-14T06:52:54.132Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hadoop 多文件连接">
+<meta name="twitter:description" content="数据集数据集下载   来源 下载解压完的数据格式为tsv,类似csv,里面的数据是按照TAB来分隔的 123omniture-logs.tsv: 浏览日志(67M)products.tsv：商品信息(12kb)users.tsv：用户信息(2M)  数据格式users.tsv   SWID（用户ID） BIRTH_DT（出生日期） GENDER_CD（性别）    0001BDD9-EABF-4D">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/07/14/hadoop-多文件连接/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>hadoop 多文件连接 | 喵星人🐱</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">喵星人🐱</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">喵星人的博客</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/starryfei" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/14/hadoop-多文件连接/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="starryfei">
+      <meta itemprop="description" content="喵星人学习记录">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/16641113?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="喵星人🐱">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">hadoop 多文件连接
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-14 14:46:39 / Modified: 14:52:54" itemprop="dateCreated datePublished" datetime="2019-07-14T14:46:39+08:00">2019-07-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p><a href="https://raw.githubusercontent.com/hortonworks/data-tutorials/master/tutorials/hdp/loading-and-querying-data-with-hadoop/assets/retail-store-logs-sample-data.zip" target="_blank" rel="noopener">数据集下载</a>   <a href="https://hortonworks.com/tutorial/loading-and-querying-data-with-hadoop/" target="_blank" rel="noopener">来源</a></p>
+<p>下载解压完的数据格式为tsv,类似csv,里面的数据是按照TAB来分隔的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">omniture-logs.tsv: 浏览日志(67M)</span><br><span class="line">products.tsv：商品信息(12kb)</span><br><span class="line">users.tsv：用户信息(2M)</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h3><h4 id="users-tsv"><a href="#users-tsv" class="headerlink" title="users.tsv"></a>users.tsv</h4><table>
+<thead>
+<tr>
+<th>SWID（用户ID）</th>
+<th>BIRTH_DT（出生日期）</th>
+<th>GENDER_CD（性别）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0001BDD9-EABF-4D0D-81BD-D9EABFCD0D7D</td>
+<td>8-Apr-84</td>
+<td>F</td>
+</tr>
+</tbody></table>
+<h4 id="products-tsv"><a href="#products-tsv" class="headerlink" title="products.tsv"></a>products.tsv</h4><table>
+<thead>
+<tr>
+<th>URL</th>
+<th>category</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="http://www.acme.com/" target="_blank" rel="noopener">http://www.acme.com/</a></td>
+<td>Books</td>
+</tr>
+</tbody></table>
+<h4 id="omniture-logs-tsv（数据太多，只选取有用的信息）"><a href="#omniture-logs-tsv（数据太多，只选取有用的信息）" class="headerlink" title="omniture-logs.tsv（数据太多，只选取有用的信息）"></a>omniture-logs.tsv（数据太多，只选取有用的信息）</h4><table>
+<thead>
+<tr>
+<th>time（1）</th>
+<th>IP（7）</th>
+<th>URL（12）</th>
+<th>UserID（13）</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="解决的问题"><a href="#解决的问题" class="headerlink" title="解决的问题"></a>解决的问题</h3><ul>
+<li>用户访问的商品与性别(年龄)之间的关系</li>
+<li>用户对那些商品感兴趣</li>
+<li>….</li>
+</ul>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><ol>
+<li>用户访问的商品与性别(年龄)之间的关系</li>
+</ol>
+<p>对于该问题，需要进行多文件进行关联，users.id-&gt;omniture-log.userid, omniture-log.URL-&gt; product.URL,  考虑到product文件较小，我们可以直接将其加载到内存中，即 通过<strong>setup()</strong>实现，此方法被MapReduce框架仅且执行一次，在执行Map任务前，进行相关变量或者资源的集中初始化工作，在<strong>cleanup()</strong>实现资源的清理</p>
+<p>剩下的只需要将users和omniture-log文件关联</p>
+<h4 id="map-任务"><a href="#map-任务" class="headerlink" title="map 任务"></a>map 任务</h4><p>对于多文件的输入，有两种方式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1多文件输入方式实现</span></span><br><span class="line">MultipleInputs.addInputPath(job,<span class="keyword">new</span> Path(args[<span class="number">0</span>]), TextInputFormat.class,  	TextStoreMap.class);</span><br><span class="line">MultipleInputs.addInputPath(job,<span class="keyword">new</span> Path(args[<span class="number">1</span>]), TextInputFormat.class, TextStoreMap.class);</span><br></pre></td></tr></table></figure>
+
+<p>对于第一种方式，需要分别设计读取不同文件的Map任务。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2</span></span><br><span class="line">FileInputFormat.addInputPath(job, <span class="keyword">new</span> Path(args[<span class="number">0</span>]));</span><br><span class="line">FileInputFormat.addInputPath(job, <span class="keyword">new</span> Path(args[<span class="number">1</span>]));</span><br></pre></td></tr></table></figure>
+
+<p>第二种方式，只编写一次Map任务，在任务中判断输入的文件是那个，然后进行分别判断,下面的代码实现了获取输入的文件的名字，用于分别是那个文件。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据分片确认输入的文件名字</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> context</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getName</span><span class="params">(Mapper.Context context)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        InputSplit split = context.getInputSplit();</span><br><span class="line">        <span class="comment">//String fileName=((FileSplit)inputSplit).getPath().getName();</span></span><br><span class="line">        Class&lt;? extends InputSplit&gt; splitClass = split.getClass();</span><br><span class="line"></span><br><span class="line">        FileSplit fileSplit = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> ( splitClass.equals(FileSplit.class) ) &#123;</span><br><span class="line">            fileSplit = (FileSplit) split;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> ( splitClass.getName().equals(</span><br><span class="line">                <span class="string">"org.apache.hadoop.mapreduce.lib.input.TaggedInputSplit"</span>) ) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Method getInputSplitMethod = splitClass</span><br><span class="line">                        .getDeclaredMethod(<span class="string">"getInputSplit"</span>);</span><br><span class="line">                getInputSplitMethod.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">                fileSplit = (FileSplit) getInputSplitMethod.invoke(split);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> IOException(e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        String fileName = fileSplit.getPath().getName();</span><br><span class="line">        <span class="keyword">return</span> fileName;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>解决完多文件的输入和识别输入的文件，就需要考虑如何将两个文件进行关联，这就用到Hadoop的shuffle机制，主要是排序，shuffle阶段会将相同的key值放到一起，然后列中的值自然而然的连接到一起，所以将Map结果的key(userId)设置成待连接的列，在reduce阶段取出每个key的List value进行解析，然后用集合分别存储解析到的数据，最后对两个集合求笛卡尔积就行。</p>
+<h4 id="Map任务"><a href="#Map任务" class="headerlink" title="Map任务"></a>Map任务</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">map</span><span class="params">(LongWritable key, Text value, Context context)</span> <span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</span><br><span class="line">    String name = ConfigUtil.getName(context);</span><br><span class="line">    String line = value.toString();</span><br><span class="line">    <span class="keyword">if</span> ( !line.contains(<span class="string">"\t"</span>) ) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    String[] args = line.split(<span class="string">"\t"</span>);</span><br><span class="line">    Text id = <span class="keyword">new</span> Text();</span><br><span class="line">    <span class="comment">// 解析users.csv SWID	BIRTH_DT	GENDER_CD</span></span><br><span class="line">    <span class="keyword">if</span> ( Common.USER_TSV.replaceAll(<span class="string">"#"</span>,<span class="string">""</span>).equals(name) ) &#123;</span><br><span class="line">        <span class="keyword">if</span> ( args.length == <span class="number">3</span> ) &#123;</span><br><span class="line">            id.set(args[<span class="number">0</span>]);</span><br><span class="line">            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            sb.append(Common.USER_TSV+args[<span class="number">1</span>]+<span class="string">" "</span>+args[<span class="number">2</span>]);</span><br><span class="line">            context.write(id, <span class="keyword">new</span> Text(sb.toString()));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="string">""</span>.equals(args[<span class="number">13</span>]) ) &#123;</span><br><span class="line">            String k = args[<span class="number">13</span>];</span><br><span class="line">            id.set(k.substring(<span class="number">1</span>, k.length() - <span class="number">1</span>));</span><br><span class="line">            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            sb.append(Common.LOG_TSV+args[<span class="number">1</span>]+<span class="string">" "</span>+args[<span class="number">7</span>]+<span class="string">" "</span>+args[<span class="number">12</span>]+<span class="string">" "</span>);</span><br><span class="line">            context.write(id, <span class="keyword">new</span> Text(sb.toString()));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Reduce任务"><a href="#Reduce任务" class="headerlink" title="Reduce任务"></a>Reduce任务</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">reduce</span><span class="params">(Text key, Iterable&lt;Text&gt; values, Context context)</span> <span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</span><br><span class="line">        <span class="comment">// 存放User.tsv</span></span><br><span class="line">        List&lt;String&gt; users = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        List&lt;String&gt; logs = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        values.forEach(v -&gt;&#123;</span><br><span class="line">            <span class="keyword">if</span>(v.toString().startsWith(Common.USER_TSV)) &#123;</span><br><span class="line">                users.add(v.toString().replace(Common.USER_TSV,<span class="string">""</span>));</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                logs.add(v.toString().replace(Common.LOG_TSV,<span class="string">""</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        users.forEach(user-&gt;logs.forEach(log-&gt;&#123;</span><br><span class="line">            Text text = <span class="keyword">new</span> Text();</span><br><span class="line">            text.set(user+<span class="string">" "</span>+log);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                context.write(<span class="keyword">new</span> Text(key),text);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;));</span><br><span class="line">				<span class="comment">// 清空数据</span></span><br><span class="line">        users.clear();</span><br><span class="line">        logs.clear();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/uploads/qrcod.jpg" alt="starryfei wechat" style="width: 200px; max-width: 100%;">
+  <div>欢迎关注我的微信公众号</div>
+</div>
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/hadoop/" rel="tag"># hadoop</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/20/ThreadLocal-使用和源码分析/" rel="next" title="ThreadLocal 使用和源码分析">
+                <i class="fa fa-chevron-left"></i> ThreadLocal 使用和源码分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars0.githubusercontent.com/u/16641113?s=460&v=4" alt="starryfei">
+            
+              <p class="site-author-name" itemprop="name">starryfei</p>
+              <div class="site-description motion-element" itemprop="description">喵星人学习记录</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/starryfei" title="GitHub &rarr; https://github.com/starryfei" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:760646630fei@gmail.com" title="E-Mail &rarr; mailto:760646630fei@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据集"><span class="nav-number">1.</span> <span class="nav-text">数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据格式"><span class="nav-number">2.</span> <span class="nav-text">数据格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#users-tsv"><span class="nav-number">2.1.</span> <span class="nav-text">users.tsv</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#products-tsv"><span class="nav-number">2.2.</span> <span class="nav-text">products.tsv</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#omniture-logs-tsv（数据太多，只选取有用的信息）"><span class="nav-number">2.3.</span> <span class="nav-text">omniture-logs.tsv（数据太多，只选取有用的信息）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决的问题"><span class="nav-number">3.</span> <span class="nav-text">解决的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方案"><span class="nav-number">3.1.</span> <span class="nav-text">解决方案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map-任务"><span class="nav-number">3.2.</span> <span class="nav-text">map 任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map任务"><span class="nav-number">3.3.</span> <span class="nav-text">Map任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reduce任务"><span class="nav-number">3.4.</span> <span class="nav-text">Reduce任务</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">starryfei</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
