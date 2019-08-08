@@ -96,21 +96,18 @@
 
 
 
-  <meta name="description" content="导读Java API中提供了一个创建线程池的工厂类Executors，但是在阿里Java规范中描述  【强制】线程池不允许使用Executors去创建，而是通过ThreadPoolExecutor的方式，这 样的处理方式让写的同学更加明确线程池的运行规则，规避资源耗尽的风险。 说明:Executors 返回的线程池对象的弊端如下:FixedThreadPool 和SingleThreadPool:">
-<meta name="keywords" content="java,线程">
+  <meta name="description" content="问题描述问题描述：单链表反转 实现思路使用指针方法1: 使用3个指针遍历单链表，逐个将节点进行反转，代码中有详细的注释，不过多解释 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717">
+<meta name="keywords" content="算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分析Executors导致OOM">
-<meta property="og:url" content="http://yoursite.com/2019/06/20/分析Executors导致OOM/index.html">
+<meta property="og:title" content="链表反转">
+<meta property="og:url" content="http://yoursite.com/2019/07/08/链表反转/index.html">
 <meta property="og:site_name" content="喵星人🐱">
-<meta property="og:description" content="导读Java API中提供了一个创建线程池的工厂类Executors，但是在阿里Java规范中描述  【强制】线程池不允许使用Executors去创建，而是通过ThreadPoolExecutor的方式，这 样的处理方式让写的同学更加明确线程池的运行规则，规避资源耗尽的风险。 说明:Executors 返回的线程池对象的弊端如下:FixedThreadPool 和SingleThreadPool:">
+<meta property="og:description" content="问题描述问题描述：单链表反转 实现思路使用指针方法1: 使用3个指针遍历单链表，逐个将节点进行反转，代码中有详细的注释，不过多解释 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://tvax1.sinaimg.cn/large/005BYqpggy1g4chjbqgnuj30od08jwet.jpg">
-<meta property="og:image" content="https://tvax1.sinaimg.cn/large/005BYqpggy1g4cihxk7i5j313k084dh9.jpg">
-<meta property="og:updated_time" content="2019-07-02T11:36:49.520Z">
+<meta property="og:updated_time" content="2019-08-08T15:27:09.625Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分析Executors导致OOM">
-<meta name="twitter:description" content="导读Java API中提供了一个创建线程池的工厂类Executors，但是在阿里Java规范中描述  【强制】线程池不允许使用Executors去创建，而是通过ThreadPoolExecutor的方式，这 样的处理方式让写的同学更加明确线程池的运行规则，规避资源耗尽的风险。 说明:Executors 返回的线程池对象的弊端如下:FixedThreadPool 和SingleThreadPool:">
-<meta name="twitter:image" content="https://tvax1.sinaimg.cn/large/005BYqpggy1g4chjbqgnuj30od08jwet.jpg">
+<meta name="twitter:title" content="链表反转">
+<meta name="twitter:description" content="问题描述问题描述：单链表反转 实现思路使用指针方法1: 使用3个指针遍历单链表，逐个将节点进行反转，代码中有详细的注释，不过多解释 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717">
 
 
 
@@ -118,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/06/20/分析Executors导致OOM/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/08/链表反转/">
 
 
 
@@ -128,7 +125,7 @@
   };
 </script>
 
-  <title>分析Executors导致OOM | 喵星人🐱</title>
+  <title>链表反转 | 喵星人🐱</title>
   
 
 
@@ -355,7 +352,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/20/分析Executors导致OOM/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/08/链表反转/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="starryfei">
@@ -372,7 +369,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">分析Executors导致OOM
+          <h1 class="post-title" itemprop="name headline">链表反转
 
               
             
@@ -398,7 +395,7 @@
                 
               
 
-              <time title="Created: 2019-06-20 18:44:57" itemprop="dateCreated datePublished" datetime="2019-06-20T18:44:57+08:00">2019-06-20</time>
+              <time title="Created: 2019-07-08 22:40:43" itemprop="dateCreated datePublished" datetime="2019-07-08T22:40:43+08:00">2019-07-08</time>
             
 
             
@@ -415,7 +412,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-02 19:36:49" itemprop="dateModified" datetime="2019-07-02T19:36:49+08:00">2019-07-02</time>
+                <time title="Modified: 2019-08-08 23:27:09" itemprop="dateModified" datetime="2019-08-08T23:27:09+08:00">2019-08-08</time>
               
             
           </span>
@@ -432,7 +429,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/源码/" itemprop="url" rel="index"><span itemprop="name">源码</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
 
                 
                 
@@ -467,53 +464,13 @@
       
 
       
-        <h3 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h3><p>Java API中提供了一个创建线程池的工厂类<strong>Executors</strong>，但是在阿里Java规范中描述</p>
-<blockquote>
-<p>【强制】线程池不允许使用Executors去创建，而是通过ThreadPoolExecutor的方式，这 样的处理方式让写的同学更加明确线程池的运行规则，规避资源耗尽的风险。 说明:Executors 返回的线程池对象的弊端如下:<br>FixedThreadPool 和SingleThreadPool: nteger.MAX_VALUE，允许请求的队列长度为 Integer.MAX_VALUE，可能会堆积大量的请求，从而导致 OOM。<br>CachedThreadPool:<br>允许创建线程的数量为Integer.MAX_VALUE，可能会创建大量的线程，从而导致 OOM。</p>
-</blockquote>
-<a id="more"></a>
-<p>在分析出现OOM之前，我们先来学习一下ThreadPoolExecutor，</p>
-<h3 id="ThreadPoolExecutor学习"><a href="#ThreadPoolExecutor学习" class="headerlink" title="ThreadPoolExecutor学习"></a>ThreadPoolExecutor学习</h3><p>先看一下其构造函数，ThreadPoolExecutor有四个构造函数，我们选取最多参数的来分析各个参数的含义</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ThreadPoolExecutor</span><span class="params">(<span class="keyword">int</span> corePoolSize,</span></span></span><br><span class="line"><span class="function"><span class="params">                           <span class="keyword">int</span> maximumPoolSize,</span></span></span><br><span class="line"><span class="function"><span class="params">                           <span class="keyword">long</span> keepAliveTime,</span></span></span><br><span class="line"><span class="function"><span class="params">                           TimeUnit unit,</span></span></span><br><span class="line"><span class="function"><span class="params">                           BlockingQueue&lt;Runnable&gt; workQueue,</span></span></span><br><span class="line"><span class="function"><span class="params">                           ThreadFactory threadFactory,</span></span></span><br><span class="line"><span class="function"><span class="params">                           RejectedExecutionHandler handler)</span></span></span><br></pre></td></tr></table></figure>
+        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>问题描述：<em>单链表反转</em></p>
+<h3 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h3><h4 id="使用指针"><a href="#使用指针" class="headerlink" title="使用指针"></a>使用指针</h4><p>方法1: 使用3个指针遍历单链表，逐个将节点进行反转，代码中有详细的注释，不过多解释</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkList</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        LinkNode node = initNode();</span><br><span class="line">        <span class="comment">// method1, 直接移动指针来完成倒序</span></span><br><span class="line">        <span class="comment">// 前一个节点</span></span><br><span class="line">        LinkNode preNode = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">// 当前节点</span></span><br><span class="line">        LinkNode curNode = node;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (curNode != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// 获取下一个节点</span></span><br><span class="line">            LinkNode next = curNode.getNext();</span><br><span class="line">            <span class="comment">// 设置当前的指针指向前一个节点</span></span><br><span class="line">            curNode.setNext(preNode);</span><br><span class="line">            <span class="comment">// 前一个节点的指针向后移动</span></span><br><span class="line">            preNode = curNode;</span><br><span class="line">            <span class="comment">// 当前节点向后移动</span></span><br><span class="line">            curNode = next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (preNode != <span class="keyword">null</span>) &#123;</span><br><span class="line">            System.out.println(preNode.data);</span><br><span class="line">            preNode = preNode.getNext();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 方法2： 栈实现</span></span><br><span class="line">        Stack&lt;LinkNode&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        LinkNode sourceNode = initNode();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (sourceNode != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// 依次将节点入栈</span></span><br><span class="line">            stack.push(sourceNode);</span><br><span class="line">            sourceNode = sourceNode.getNext();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (!stack.empty()) &#123;</span><br><span class="line">            System.out.println(stack.pop().data);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 初始化单链表数据</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> LinkNode <span class="title">initNode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; datas = Arrays.asList(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>);</span><br><span class="line">        <span class="comment">// 初始化head节点</span></span><br><span class="line">        LinkNode node = <span class="keyword">new</span> LinkNode(<span class="number">0</span>);</span><br><span class="line">        LinkNode parnet = node;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt; datas.size();i++) &#123;</span><br><span class="line">           LinkNode next = <span class="keyword">new</span> LinkNode(datas.get(i));</span><br><span class="line">           parnet.setNext(next);</span><br><span class="line"></span><br><span class="line">           parnet = next;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 定义单链表结构</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkNode</span></span>&#123;</span><br><span class="line">        <span class="comment">// 节点数据</span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> data;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 指向下一个节点的指针</span></span><br><span class="line">        <span class="keyword">private</span> LinkNode next;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">LinkNode</span><span class="params">(<span class="keyword">int</span> data)</span></span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.data = data;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNext</span><span class="params">(LinkNode next)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.next = next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> LinkNode <span class="title">getNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><p><strong>corePoolSize</strong> :核心线程池大小，当在execute(Runnable)方法中提交新任务并且少于corePoolSize线程正在运行时，即使其他工作线程处于空闲状态，也会创建一个新线程来处理该请求。</p>
-</li>
-<li><p><strong>maximumPoolSize</strong>：最大线程池大小，如果有多于corePoolSize但小于maximumPoolSize线程正在运行，则仅当队列已满时才会创建新线程。</p>
-</li>
-<li><p><strong>keepAliveTime</strong>：线程最大存活时间，如果线程池当前拥有超过corePoolSize的线程，那么多余的线程在空闲时间超过keepAliveTime时会被终止</p>
-</li>
-<li><p><strong>unit</strong>：时间单位</p>
-</li>
-<li><p><strong>workQueue</strong>：线程等待队列，如果当前线程池任务线程数量大于corePoolSize，执行器总是优先从线程队列中取一个空闲线程，而不是创建一个任务线程；如果当前线程池任务线程数量大于corePoolSize，且队列中无空闲任务线程，将会创建一个任务线程，直到超出maximumPoolSize，如果超时maximumPoolSize，则任务将会被拒绝。</p>
-</li>
-<li><p><strong>threadFactory</strong>：线程创建工厂,如果未另行指定，则使用Executors.defaultThreadFactory默认工厂</p>
-</li>
-<li><p><strong>handler</strong>：任务拒绝策略，拒绝任务有两种情况：1. 线程池已经被关闭；2. 任务队列已满且maximumPoolSizes已满；</p>
-<pre><code> AbortPolicy：默认策略，抛出RejectedExecutionException运行时异常；
- CallerRunsPolicy：这提供了一个简单的反馈控制机制，可以减慢提交新任务的速度；
- DiscardPolicy：直接丢弃新提交的任务；
-DiscardOldestPolicy：如果执行器没有关闭，队列头的任务将会被丢弃，然后执行器重新尝试执行任务（如果失败，则重复这一过程）；</code></pre><p>我们可以自己定义RejectedExecutionHandler，以适应特殊的容量和队列策略场景中。</p>
-</li>
-</ul>
-<p>下图是线程池任务流程图<br><img src="https://tvax1.sinaimg.cn/large/005BYqpggy1g4chjbqgnuj30od08jwet.jpg" alt="流程图" title="流程图"></p>
-<p>上面简单分析了ThreadPoolExecutor的内容，下面我们开始分析Executors创建线程池出现OOM的原因</p>
-<h3 id="OOM-产生原因"><a href="#OOM-产生原因" class="headerlink" title="OOM 产生原因"></a>OOM 产生原因</h3><p><strong>newFixedThreadPool</strong> 创建一个固定大小的线程池,看一下源码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ExecutorService <span class="title">newFixedThreadPool</span><span class="params">(<span class="keyword">int</span> nThreads)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ThreadPoolExecutor(nThreads, nThreads,</span><br><span class="line">                                      <span class="number">0L</span>, TimeUnit.MILLISECONDS,</span><br><span class="line">                                      <span class="keyword">new</span> LinkedBlockingQueue&lt;Runnable&gt;());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>方法2: 使用栈，遍历单链表，依次将节点入栈</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法2： 栈实现</span></span><br><span class="line">       Stack&lt;LinkNode&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">       LinkNode sourceNode = initNode();</span><br><span class="line"></span><br><span class="line">       <span class="keyword">while</span> (sourceNode != <span class="keyword">null</span>) &#123;</span><br><span class="line">           <span class="comment">// 依次将节点入栈</span></span><br><span class="line">           stack.push(sourceNode);</span><br><span class="line">           sourceNode = sourceNode.getNext();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">while</span> (!stack.empty()) &#123;</span><br><span class="line">         <span class="comment">// 出栈</span></span><br><span class="line">           System.out.println(stack.pop().data);</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
 
-<p>从源码中看到corePoolSize与maximumPoolSize相等，keepAliveTime = 0 该参数默认对核心线程无效，前几个参数没有什么问题，主要是看一下最后一个workQueue，<strong>使用的是LinkedBlockingQueue</strong></p>
-<p><strong>LinkedBlockingQueue</strong>: 基于链表的阻塞队列,内部维持着一个数据缓冲队列（该队列由一个链表构成），当生产者往队列中放入一个数据时，队列会从生产者手中获取数据，并缓存在队列内部，而生产者立即返回；只有当队列缓冲区达到最大值缓存容量时（LinkedBlockingQueue可以通过构造函数指定该值），才会阻塞生产者队列，直到消费者从队列中消费掉一份数据，生产者线程会被唤醒，反之对于消费者这端的处理也基于同样的原理。</p>
-<p>我们看一下源码，不难发现，构造函数中使用的是<strong>Integer.MAX_VALUE</strong>来创建队列的容量，这样的话，如果生产者的速度一旦大于消费者的速度，也许还没有等到队列满阻塞产生，系统内存就有可能已被消耗殆尽了，就会出现OOM。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * Creates a &#123;<span class="doctag">@code</span> LinkedBlockingQueue&#125; with a capacity of</span></span><br><span class="line"><span class="comment">  * &#123;<span class="doctag">@link</span> Integer#MAX_VALUE&#125;.</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="title">LinkedBlockingQueue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">     <span class="keyword">this</span>(Integer.MAX_VALUE);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<p> <strong>SingleThreadPool</strong> :   SingleThreadPoo ，corePoolSize和maximumPoolSize都是1，即SingleThreadPool只有一个核心线程<br>出现OOM的原因和newFixedThreadPool一样,使用默认大小的LinkedBlockingQueue队列</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ExecutorService <span class="title">newSingleThreadExecutor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> FinalizableDelegatedExecutorService</span><br><span class="line">            (<span class="keyword">new</span> ThreadPoolExecutor(<span class="number">1</span>, <span class="number">1</span>,</span><br><span class="line">                                    <span class="number">0L</span>, TimeUnit.MILLISECONDS,</span><br><span class="line">                                    <span class="keyword">new</span> LinkedBlockingQueue&lt;Runnable&gt;()));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>newCachedThreadPool</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ExecutorService <span class="title">newCachedThreadPool</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ThreadPoolExecutor(<span class="number">0</span>, Integer.MAX_VALUE,</span><br><span class="line">                                  <span class="number">60L</span>, TimeUnit.SECONDS,</span><br><span class="line">                                  <span class="keyword">new</span> SynchronousQueue&lt;Runnable&gt;());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>corePoolSize = 0，maximumPoolSize = Integer.MAX_VALUE，即线程数量几乎无限制,导致OOM，keepAliveTime = 60s，线程空闲60s后自动结束。workQueue 为 SynchronousQueue 同步队列，这个队列类似于一个接力棒，入队出队必须同时传递，因为CachedThreadPool线程创建无限制，不会有队列等待，所以使用SynchronousQueue</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>按照阿里规范手动实现线程池的创建<br><img src="https://tvax1.sinaimg.cn/large/005BYqpggy1g4cihxk7i5j313k084dh9.jpg" alt="create" title="create"></p>
 
       
     </div>
@@ -546,9 +503,7 @@ DiscardOldestPolicy：如果执行器没有关闭，队列头的任务将会被�
         
         <div class="post-tags">
           
-            <a href="/tags/java/" rel="tag"># java</a>
-          
-            <a href="/tags/线程/" rel="tag"># 线程</a>
+            <a href="/tags/算法/" rel="tag"># 算法</a>
           
         </div>
       
@@ -561,8 +516,8 @@ DiscardOldestPolicy：如果执行器没有关闭，队列头的任务将会被�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/18/基于RESP实现Java-redis客户端/" rel="next" title="基于RESP实现Java-redis客户端">
-                <i class="fa fa-chevron-left"></i> 基于RESP实现Java-redis客户端
+              <a href="/2019/06/20/ThreadLocal-使用和源码分析/" rel="next" title="ThreadLocal 使用和源码分析">
+                <i class="fa fa-chevron-left"></i> ThreadLocal 使用和源码分析
               </a>
             
           </div>
@@ -571,8 +526,8 @@ DiscardOldestPolicy：如果执行器没有关闭，队列头的任务将会被�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/20/ThreadLocal-使用和源码分析/" rel="prev" title="ThreadLocal 使用和源码分析">
-                ThreadLocal 使用和源码分析 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/14/hadoop-多文件连接/" rel="prev" title="hadoop 多文件连接">
+                hadoop 多文件连接 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -768,7 +723,7 @@ DiscardOldestPolicy：如果执行器没有关闭，队列头的任务将会被�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#导读"><span class="nav-number">1.</span> <span class="nav-text">导读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ThreadPoolExecutor学习"><span class="nav-number">2.</span> <span class="nav-text">ThreadPoolExecutor学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OOM-产生原因"><span class="nav-number">3.</span> <span class="nav-text">OOM 产生原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现思路"><span class="nav-number">2.</span> <span class="nav-text">实现思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用指针"><span class="nav-number">2.1.</span> <span class="nav-text">使用指针</span></a></li></ol></li></ol></div>
             
 
           </div>
