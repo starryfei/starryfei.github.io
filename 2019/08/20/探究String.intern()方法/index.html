@@ -96,20 +96,21 @@
 
 
 
-  <meta name="description" content="安装环境 Mysql 8.0.x Hive 2.3.5 Mac  Hive 安装配置下载之后解压,配置文件都在  hive/config文件夹下,可以考虑将其添加到环境变量中，这里不在详述 配置Hive-env.sh12345# 设置Hadoop的路径HADOOP_HOME= ..# 设置Hive的配置文件路径export HIVE_CONF_DIR= ..  配置Hive-site.xml文件1">
-<meta name="keywords" content="hadoop,hive">
+  <meta name="description" content="看《深入理解Java虚拟机》书中有一个问题，关于书中String.intern()有一个问题，说“java”这个字符串在执行StringBuilder.toString()之前已经出现过，感到很疑惑，故上网查找一番，找到答案，下面是原文的链接。 原文链接：https://my.oschina.net/lienson/blog/3026437 前言书中String.intern()返回引用的测试，代">
+<meta name="keywords" content="java,JVM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac下hive-2.3.5 安装配置">
-<meta property="og:url" content="http://yoursite.com/2019/07/19/Mac下hive-2-3-5-安装配置/index.html">
+<meta property="og:title" content="《深入理解Java虚拟机》 探究String.intern()方法">
+<meta property="og:url" content="http://yoursite.com/2019/08/20/探究String.intern()方法/index.html">
 <meta property="og:site_name" content="喵星人🐱">
-<meta property="og:description" content="安装环境 Mysql 8.0.x Hive 2.3.5 Mac  Hive 安装配置下载之后解压,配置文件都在  hive/config文件夹下,可以考虑将其添加到环境变量中，这里不在详述 配置Hive-env.sh12345# 设置Hadoop的路径HADOOP_HOME= ..# 设置Hive的配置文件路径export HIVE_CONF_DIR= ..  配置Hive-site.xml文件1">
+<meta property="og:description" content="看《深入理解Java虚拟机》书中有一个问题，关于书中String.intern()有一个问题，说“java”这个字符串在执行StringBuilder.toString()之前已经出现过，感到很疑惑，故上网查找一番，找到答案，下面是原文的链接。 原文链接：https://my.oschina.net/lienson/blog/3026437 前言书中String.intern()返回引用的测试，代">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.loli.net/2019/07/19/5d319ce9379be90777.png">
-<meta property="og:updated_time" content="2019-07-19T10:40:55.173Z">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006Xmmmggy1g66k6ktaq2j30rz0g3ab9.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006Xmmmggy1g66k4gxtq5j30lc0ftq3z.jpg">
+<meta property="og:updated_time" content="2019-08-20T15:28:55.055Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac下hive-2.3.5 安装配置">
-<meta name="twitter:description" content="安装环境 Mysql 8.0.x Hive 2.3.5 Mac  Hive 安装配置下载之后解压,配置文件都在  hive/config文件夹下,可以考虑将其添加到环境变量中，这里不在详述 配置Hive-env.sh12345# 设置Hadoop的路径HADOOP_HOME= ..# 设置Hive的配置文件路径export HIVE_CONF_DIR= ..  配置Hive-site.xml文件1">
-<meta name="twitter:image" content="https://i.loli.net/2019/07/19/5d319ce9379be90777.png">
+<meta name="twitter:title" content="《深入理解Java虚拟机》 探究String.intern()方法">
+<meta name="twitter:description" content="看《深入理解Java虚拟机》书中有一个问题，关于书中String.intern()有一个问题，说“java”这个字符串在执行StringBuilder.toString()之前已经出现过，感到很疑惑，故上网查找一番，找到答案，下面是原文的链接。 原文链接：https://my.oschina.net/lienson/blog/3026437 前言书中String.intern()返回引用的测试，代">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006Xmmmggy1g66k6ktaq2j30rz0g3ab9.jpg">
 
 
 
@@ -117,7 +118,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/07/19/Mac下hive-2-3-5-安装配置/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/20/探究String.intern()方法/">
 
 
 
@@ -127,7 +128,7 @@
   };
 </script>
 
-  <title>Mac下hive-2.3.5 安装配置 | 喵星人🐱</title>
+  <title>《深入理解Java虚拟机》 探究String.intern()方法 | 喵星人🐱</title>
   
 
 
@@ -354,7 +355,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/19/Mac下hive-2-3-5-安装配置/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/20/探究String.intern()方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="starryfei">
@@ -371,7 +372,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Mac下hive-2.3.5 安装配置
+          <h1 class="post-title" itemprop="name headline">《深入理解Java虚拟机》 探究String.intern()方法
 
               
             
@@ -397,7 +398,7 @@
                 
               
 
-              <time title="Created: 2019-07-19 17:51:04 / Modified: 18:40:55" itemprop="dateCreated datePublished" datetime="2019-07-19T17:51:04+08:00">2019-07-19</time>
+              <time title="Created: 2019-08-20 23:03:12 / Modified: 23:28:55" itemprop="dateCreated datePublished" datetime="2019-08-20T23:03:12+08:00">2019-08-20</time>
             
 
             
@@ -419,7 +420,14 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/转载/" itemprop="url" rel="index"><span itemprop="name">转载</span></a></span>
 
                 
                 
@@ -454,34 +462,48 @@
       
 
       
-        <h3 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h3><ul>
-<li>Mysql 8.0.x</li>
-<li>Hive 2.3.5</li>
-<li>Mac</li>
+        <p>看《深入理解Java虚拟机》书中有一个问题，关于书中String.intern()有一个问题，说“java”这个字符串在执行StringBuilder.toString()之前已经出现过，感到很疑惑，故上网查找一番，找到答案，下面是原文的链接。</p>
+<p>原文链接：<a href="https://my.oschina.net/lienson/blog/3026437" target="_blank" rel="noopener">https://my.oschina.net/lienson/blog/3026437</a></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>书中String.intern()返回引用的测试，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    String str1 = <span class="keyword">new</span> StringBuilder(<span class="string">"计算机"</span>).append(<span class="string">"软件"</span>).toString();</span><br><span class="line">    System.out.println(str1.intern() == str1);</span><br><span class="line"> </span><br><span class="line">    String str2 = <span class="keyword">new</span> StringBuilder(<span class="string">"ja"</span>).append(<span class="string">"va"</span>).toString();</span><br><span class="line">    System.out.println(str2.intern() == str2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>它是这么解释的：</p>
+<blockquote>
+<p>这段代码在JDK 1.6中运行，会得到两个false，而在JDK 1.7中运行，会得到一个true和一个false。产生差异的原因是：在JDK 1.6中，intern()会把首次遇到的字符串实例复制到永久代中，返回的也是永久代中这个字符串实例的引用，而由StringBuilder创建的字符串实例在Java堆上，所以必然不是同一个引用，将返回false。而JDK 1.7的intern()实现不会复制实例，只是在常量池中记录首次出现的实例引用，因此intern()返回的引用和由StringBuilder创建的那个字符串实例是同一个。对str2比较返回false是因为“java”这个字符串在执行StringBuilder.toString()之前已经出现过，字符串常量池中已经有它的引用了，不符合“首次出现”的原则，而“计算机软件”这个字符串则是首次出现的，因此返回true。</p>
+</blockquote>
+<h3 id="疑惑"><a href="#疑惑" class="headerlink" title="疑惑"></a>疑惑</h3><p>相信很多人看了这个解释后，最大的疑问不是JDK 1.6、1.7intern()方法的差异（这个详细的讲解我们等下再说），而是为啥“java”这个字符串已经出现过了？</p>
+<p>思考了下，既然我们代码中没有去设置，那就是JDK内部帮我们去做了。为了验证我们的猜测是否正确，我们来看下JDK在初始化的时候做了啥。</p>
+<p>在System类中通过调用initializeSystemClass()方法来完成System类的初始化工作的,在该方法中 有这么一句代码<strong>sun.misc.Version.init()</strong>，发现调用了Version对象的init静态方法，</p>
+<p>Version源码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Version</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String launcher_name = <span class="string">"java"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String java_version = <span class="string">"1.8.0_191"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String java_runtime_name = <span class="string">"Java(TM) SE Runtime Environment"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String java_profile_name = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String java_runtime_version = <span class="string">"1.8.0_191-b12"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Version</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.setProperty(<span class="string">"java.version"</span>, <span class="string">"1.8.0_191"</span>);</span><br><span class="line">        System.setProperty(<span class="string">"java.runtime.version"</span>, <span class="string">"1.8.0_191-b12"</span>);</span><br><span class="line">        System.setProperty(<span class="string">"java.runtime.name"</span>, <span class="string">"Java(TM) SE Runtime Environment"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  ........</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因此sun.misc.Version类会在JDK类库的初始化过程中被加载并初始化，而在初始化时它需要对静态常量字段根据指定的常量值（ConstantValue）做默认初始化，此时被sun.misc.Version.launcher静态常量字段所引用的”java”字符串字面量就被intern到HotSpotVM的字符串常量池——StringTable里了。</p>
+<p>假如我们将上述代码修改为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    String str1 = <span class="keyword">new</span> StringBuilder(<span class="string">"计算机"</span>).append(<span class="string">"软件"</span>).toString();</span><br><span class="line">    System.out.println(str1.intern() == str1);</span><br><span class="line"></span><br><span class="line">    String str2 = <span class="keyword">new</span> StringBuilder(<span class="string">"222"</span>).append(<span class="string">"va"</span>).toString();</span><br><span class="line">    System.out.println(str2.intern() == str2);</span><br><span class="line">    String str3 = <span class="keyword">new</span> StringBuilder(<span class="string">"Java(TM) SE Runtime "</span>).append(<span class="string">"Environment"</span>).toString();</span><br><span class="line">System.out.println(str2.intern() == str2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果是 true，true， false，从而证实了我们的猜测。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>回到上面JDK 1.6、1.7intern()方法的差异，我们来看下看下intern()方法的源码（JDK8）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> String <span class="title">intern</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>在JDK 1.6及之前的版本中，常量池是分配在永久代内的，而永久代和Java堆是两个完全分开的区域。如果字符串常量池中已经包含一个等于此String对象的字符串，则返回代表池中这个字符串的String对象；否则，将此String对象包含的字符串添加到常量池中，并且<strong>返回此String对象的引用</strong>。</p>
+<p>从JDK 1.7开始“去永久代”，字符串常量池已经被转移至Java堆中，开发人员也对intern 方法做了一些修改。因为字符串常量池和new的对象都存于Java堆中，为了优化性能和减少内存开销，当调用 intern 方法时，如果常量池中已经存在该字符串，则返回池中字符串；否则直接<strong>存储堆中的引用</strong>，也就是字符串常量池中存储的是指向堆里的对象。</p>
+<blockquote>
+<p>可以参考<a href="https://my.oschina.net/lienson/blog/3026334" target="_blank" rel="noopener">《深入理解JVM——Java虚拟机内存模型》</a></p>
+</blockquote>
+<p>我们以上面代码为例子，通过画内存模型图来分析下这里面的原理：</p>
+<ul>
+<li><p>JDK 1.6及之前版本的内存模型图</p>
+<p><img src="https://ws2.sinaimg.cn/large/006Xmmmggy1g66k6ktaq2j30rz0g3ab9.jpg" alt></p>
+<p>可以看出，str1和str2引用在Java虚拟机栈上，而str1.intern()和str2.intern()引用在永久代上，所以都返回false。 </p>
+</li>
+<li><p>JDK 1.7及以上版本的内存模型图</p>
+<p><img src="https://ws4.sinaimg.cn/large/006Xmmmggy1g66k4gxtq5j30lc0ftq3z.jpg" alt="https://ws4.sinaimg.cn/large/006Xmmmggy1g66k4gxtq5j30lc0ftq3z.jpg"></p>
+</li>
 </ul>
-<h4 id="Hive-安装配置"><a href="#Hive-安装配置" class="headerlink" title="Hive 安装配置"></a>Hive 安装配置</h4><p><a href="http://www.apache.org/dyn/closer.cgi/hive/" target="_blank" rel="noopener">下载</a>之后解压,配置文件都在  hive/config文件夹下,可以考虑将其添加到环境变量中，这里不在详述</p>
-<h5 id="配置Hive-env-sh"><a href="#配置Hive-env-sh" class="headerlink" title="配置Hive-env.sh"></a>配置Hive-env.sh</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 设置Hadoop的路径</span><br><span class="line">HADOOP_HOME= ..</span><br><span class="line"></span><br><span class="line"># 设置Hive的配置文件路径</span><br><span class="line">export HIVE_CONF_DIR= ..</span><br></pre></td></tr></table></figure>
-
-<h5 id="配置Hive-site-xml文件"><a href="#配置Hive-site-xml文件" class="headerlink" title="配置Hive-site.xml文件"></a>配置Hive-site.xml文件</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml-stylesheet type="text/xsl" href="configuration.xsl"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.metastore.local<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!--mysql 的用户名--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionUserName<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>***<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">     <span class="comment">&lt;!--mysql 的密码--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionPassword<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>****<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">       <span class="comment">&lt;!--mysql 的地址--&gt;</span></span><br><span class="line">  	  <span class="comment">&lt;!--陪置useSSL=true并为服务器证书验证提供信任存储，如果不加可能连接不上--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionURL<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>jdbc:mysql://localhost:3306/hive?createDatabaseIfNotExist=true&amp;amp;useSSL=false<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionDriverName<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>com.mysql.jdbc.Driver<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="添加mysql连接驱动"><a href="#添加mysql连接驱动" class="headerlink" title="添加mysql连接驱动"></a>添加mysql连接驱动</h5><p>为了将metastore信息存储到Mysql，需要做如下的操作</p>
-<p>将mysql-connector-java-8.0.13.jar (可以从本地Maven仓库中查找) 添加到lib 目录下，这个驱动是按照mysql版本进行选择的，刚开始的时候使用5.4，出现以下异常,</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Underlying cause: java.sql.SQLException : Unknown system variable <span class="string">'query_cache_size'</span></span><br><span class="line">SQL Error code: <span class="number">1193</span></span><br></pre></td></tr></table></figure>
-
-<p>将Mysql服务启动起来之后，紧接着执行以下的命令，进行Hive初始化</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/schematool -dbType mysql -initSchema</span><br></pre></td></tr></table></figure>
-
-<p>如何出现以下信息,说明连接mysql成功</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Loading class `com.mysql.jdbc.Driver&apos;. This is deprecated. The new driver class is `com.mysql.cj.jdbc.Driver&apos;. The driver is automatically registered via the SPI and manual loading of the driver class is generally unnecessary.</span><br><span class="line">Starting metastore schema initialization to 2.3.0</span><br><span class="line">Initialization script hive-schema-2.3.0.mysql.sql</span><br><span class="line">Initialization script completed</span><br><span class="line">schemaTool completed</span><br></pre></td></tr></table></figure>
-
-<h5 id="进入shell窗口"><a href="#进入shell窗口" class="headerlink" title="进入shell窗口"></a>进入shell窗口</h5><p>命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/Hive</span><br></pre></td></tr></table></figure>
-
-<p>创建一个数据库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database myhive;</span><br></pre></td></tr></table></figure>
-
-<p>在mysql中可以看到我们创建的hive数据库，名字是在hive-site.xml中配置</p>
-<p><img src="https://i.loli.net/2019/07/19/5d319ce9379be90777.png" alt></p>
+<p>可以看出，str1和str2引用在Java虚拟机栈上，而str1.intern()返回的是str1引用，str2.intern()返回的引用在常量池上，所以一个返回true，一个返回false。</p>
+<blockquote>
+<p>在Java中，用双引号声明出来的String对象会直接存储在常量池中，如果不是用双引号声明的String对象，可以用String提供的intern方法。intern方法会从字符串常量池中查询当前字符串是否存在，若不存在就会把当前字符串放入常量池中，再返回。</p>
+</blockquote>
 
       
     </div>
@@ -514,9 +536,9 @@
         
         <div class="post-tags">
           
-            <a href="/tags/hadoop/" rel="tag"># hadoop</a>
+            <a href="/tags/java/" rel="tag"># java</a>
           
-            <a href="/tags/hive/" rel="tag"># hive</a>
+            <a href="/tags/JVM/" rel="tag"># JVM</a>
           
         </div>
       
@@ -529,8 +551,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/19/mysql-多表连接/" rel="next" title="mysql 多表连接">
-                <i class="fa fa-chevron-left"></i> mysql 多表连接
+              <a href="/2019/07/24/mysql-索引/" rel="next" title="mysql 索引">
+                <i class="fa fa-chevron-left"></i> mysql 索引
               </a>
             
           </div>
@@ -538,10 +560,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/24/mysql-事务/" rel="prev" title="mysql 事务">
-                mysql 事务 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -744,7 +762,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装环境"><span class="nav-number">1.</span> <span class="nav-text">安装环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hive-安装配置"><span class="nav-number">1.1.</span> <span class="nav-text">Hive 安装配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#配置Hive-env-sh"><span class="nav-number">1.1.1.</span> <span class="nav-text">配置Hive-env.sh</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置Hive-site-xml文件"><span class="nav-number">1.1.2.</span> <span class="nav-text">配置Hive-site.xml文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#添加mysql连接驱动"><span class="nav-number">1.1.3.</span> <span class="nav-text">添加mysql连接驱动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#进入shell窗口"><span class="nav-number">1.1.4.</span> <span class="nav-text">进入shell窗口</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#疑惑"><span class="nav-number">2.</span> <span class="nav-text">疑惑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原理"><span class="nav-number">3.</span> <span class="nav-text">原理</span></a></li></ol></div>
             
 
           </div>

@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="喵星人🐱">
 <meta property="og:description" content="问题描述偶然看到一段代码，感觉挺有意思，特拿来分享一下 12345678910public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException &amp;#123;        Class&amp;lt;?&amp;gt; cache = Integer.class.getDeclaredClasses(">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-08T16:09:11.437Z">
+<meta property="og:updated_time" content="2019-08-10T13:39:21.663Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一道有意思的Java题">
 <meta name="twitter:description" content="问题描述偶然看到一段代码，感觉挺有意思，特拿来分享一下 12345678910public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException &amp;#123;        Class&amp;lt;?&amp;gt; cache = Integer.class.getDeclaredClasses(">
@@ -412,7 +412,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-09 00:09:11" itemprop="dateModified" datetime="2019-08-09T00:09:11+08:00">2019-08-09</time>
+                <time title="Modified: 2019-08-10 21:39:21" itemprop="dateModified" datetime="2019-08-10T21:39:21+08:00">2019-08-10</time>
               
             
           </span>
@@ -479,7 +479,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">IntegerCache</span> </span>&#123;</span><br><span class="line">          <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> high;</span><br><span class="line">          <span class="keyword">static</span> <span class="keyword">final</span> Integer cache[];</span><br><span class="line">          <span class="comment">//默认为值在-128到127之间，它就会返回该缓存的实例</span></span><br><span class="line">          <span class="keyword">static</span> &#123;</span><br><span class="line">              <span class="keyword">final</span> <span class="keyword">int</span> low = -<span class="number">128</span>;<span class="comment">//最小值不会变，</span></span><br><span class="line">  </span><br><span class="line">              <span class="comment">// high value may be configured by property，可以自己设置最大值</span></span><br><span class="line">              <span class="keyword">int</span> h = <span class="number">127</span>;</span><br><span class="line">            <span class="comment">//integerCacheHighPropValue如何设置的最大值不为空，实现拆箱</span></span><br><span class="line">              <span class="keyword">if</span> (integerCacheHighPropValue != <span class="keyword">null</span>) &#123;</span><br><span class="line">                  <span class="comment">// Use Long.decode here to avoid invoking methods that</span></span><br><span class="line">                  <span class="comment">// require Integer's autoboxing cache to be initialized</span></span><br><span class="line">                  <span class="keyword">int</span> i = Long.decode(integerCacheHighPropValue).intValue();<span class="comment">//拆箱</span></span><br><span class="line">                  i = Math.max(i, <span class="number">127</span>);<span class="comment">//获取设置和127中最大值</span></span><br><span class="line">                  <span class="comment">// Maximum array size is Integer.MAX_VALUE</span></span><br><span class="line">                  h = Math.min(i, Integer.MAX_VALUE - -low);<span class="comment">//防止溢出</span></span><br><span class="line">              &#125;</span><br><span class="line">              high = h;</span><br><span class="line">                <span class="comment">//进行缓存</span></span><br><span class="line">              cache = <span class="keyword">new</span> Integer[(high - low) + <span class="number">1</span>];</span><br><span class="line">              <span class="keyword">int</span> j = low;</span><br><span class="line">              <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; cache.length; k++)</span><br><span class="line">                  cache[k] = <span class="keyword">new</span> Integer(j++);</span><br><span class="line">          &#125;</span><br><span class="line">  </span><br><span class="line">          <span class="function"><span class="keyword">private</span> <span class="title">IntegerCache</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
 
 <p>再回到我们的代码中， 代码里通过反射缓存中的第133（二进制<strong>10000101</strong>首位代表符号位）号数据（即整数5）赋值给了第132号数据（既整数4），所以4就会变成5来表示。在使用int数据计算时结果是正常的，但是在打印时由于做了装箱（Integer.valueOf()），int数据变成了Integer，这时会采用缓存，所以4就会打印出5来。</p>
-<h4 id="装箱和拆箱扩展"><a href="#装箱和拆箱扩展" class="headerlink" title="装箱和拆箱扩展"></a>装箱和拆箱扩展</h4><ul>
+<h4 id="装箱和拆箱知识扩展"><a href="#装箱和拆箱知识扩展" class="headerlink" title="装箱和拆箱知识扩展"></a>装箱和拆箱知识扩展</h4><ul>
 <li><p>装箱：自动将基本数据类型转换为包装器类型。</p>
 <ul>
 <li>触发条件：在基本类型的值赋值给包装类型时触发 例如：Integer i = 10;  装箱 —&gt;底层实现 Integer i = Integer.valueof(10)</li>
@@ -617,7 +617,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -646,7 +646,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -679,7 +683,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -743,7 +749,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题分析"><span class="nav-number">2.</span> <span class="nav-text">问题分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码分析"><span class="nav-number">2.1.</span> <span class="nav-text">代码分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题解答"><span class="nav-number">2.2.</span> <span class="nav-text">问题解答</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#装箱和拆箱扩展"><span class="nav-number">2.3.</span> <span class="nav-text">装箱和拆箱扩展</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题分析"><span class="nav-number">2.</span> <span class="nav-text">问题分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码分析"><span class="nav-number">2.1.</span> <span class="nav-text">代码分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题解答"><span class="nav-number">2.2.</span> <span class="nav-text">问题解答</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#装箱和拆箱知识扩展"><span class="nav-number">2.3.</span> <span class="nav-text">装箱和拆箱知识扩展</span></a></li></ol></li></ol></div>
             
 
           </div>
