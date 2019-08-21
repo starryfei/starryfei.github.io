@@ -96,21 +96,18 @@
 
 
 
-  <meta name="description" content="导读Java API中提供了一个创建线程池的工厂类Executors，但是在阿里Java规范中描述  【强制】线程池不允许使用Executors去创建，而是通过ThreadPoolExecutor的方式，这 样的处理方式让写的同学更加明确线程池的运行规则，规避资源耗尽的风险。 说明:Executors 返回的线程池对象的弊端如下:FixedThreadPool 和SingleThreadPool:">
-<meta name="keywords" content="java,线程">
+  <meta name="description" content="题目描述【链表合并题】将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 示例： 12输入：1-&amp;gt;2-&amp;gt;4, 1-&amp;gt;3-&amp;gt;4输出：1-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;4  数据结构Java定义的链表结构如下： 12345678910public class ListNode &amp;#123;  int val;">
+<meta name="keywords" content="算法,LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分析Executors导致OOM">
-<meta property="og:url" content="http://yoursite.com/2019/06/20/分析Executors导致OOM/index.html">
+<meta property="og:title" content="有序链表合并">
+<meta property="og:url" content="http://yoursite.com/2019/08/21/有序链表合并/index.html">
 <meta property="og:site_name" content="喵星人🐱">
-<meta property="og:description" content="导读Java API中提供了一个创建线程池的工厂类Executors，但是在阿里Java规范中描述  【强制】线程池不允许使用Executors去创建，而是通过ThreadPoolExecutor的方式，这 样的处理方式让写的同学更加明确线程池的运行规则，规避资源耗尽的风险。 说明:Executors 返回的线程池对象的弊端如下:FixedThreadPool 和SingleThreadPool:">
+<meta property="og:description" content="题目描述【链表合并题】将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 示例： 12输入：1-&amp;gt;2-&amp;gt;4, 1-&amp;gt;3-&amp;gt;4输出：1-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;4  数据结构Java定义的链表结构如下： 12345678910public class ListNode &amp;#123;  int val;">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://tvax1.sinaimg.cn/large/005BYqpggy1g4chjbqgnuj30od08jwet.jpg">
-<meta property="og:image" content="https://tvax1.sinaimg.cn/large/005BYqpggy1g4cihxk7i5j313k084dh9.jpg">
-<meta property="og:updated_time" content="2019-07-02T11:36:49.520Z">
+<meta property="og:updated_time" content="2019-08-21T16:29:19.787Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分析Executors导致OOM">
-<meta name="twitter:description" content="导读Java API中提供了一个创建线程池的工厂类Executors，但是在阿里Java规范中描述  【强制】线程池不允许使用Executors去创建，而是通过ThreadPoolExecutor的方式，这 样的处理方式让写的同学更加明确线程池的运行规则，规避资源耗尽的风险。 说明:Executors 返回的线程池对象的弊端如下:FixedThreadPool 和SingleThreadPool:">
-<meta name="twitter:image" content="https://tvax1.sinaimg.cn/large/005BYqpggy1g4chjbqgnuj30od08jwet.jpg">
+<meta name="twitter:title" content="有序链表合并">
+<meta name="twitter:description" content="题目描述【链表合并题】将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 示例： 12输入：1-&amp;gt;2-&amp;gt;4, 1-&amp;gt;3-&amp;gt;4输出：1-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;4  数据结构Java定义的链表结构如下： 12345678910public class ListNode &amp;#123;  int val;">
 
 
 
@@ -118,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/06/20/分析Executors导致OOM/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/21/有序链表合并/">
 
 
 
@@ -128,7 +125,7 @@
   };
 </script>
 
-  <title>分析Executors导致OOM | 喵星人🐱</title>
+  <title>有序链表合并 | 喵星人🐱</title>
   
 
 
@@ -355,7 +352,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/20/分析Executors导致OOM/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/21/有序链表合并/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="starryfei">
@@ -372,7 +369,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">分析Executors导致OOM
+          <h1 class="post-title" itemprop="name headline">有序链表合并
 
               
             
@@ -398,7 +395,7 @@
                 
               
 
-              <time title="Created: 2019-06-20 18:44:57" itemprop="dateCreated datePublished" datetime="2019-06-20T18:44:57+08:00">2019-06-20</time>
+              <time title="Created: 2019-08-21 23:36:58" itemprop="dateCreated datePublished" datetime="2019-08-21T23:36:58+08:00">2019-08-21</time>
             
 
             
@@ -415,7 +412,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-02 19:36:49" itemprop="dateModified" datetime="2019-07-02T19:36:49+08:00">2019-07-02</time>
+                <time title="Modified: 2019-08-22 00:29:19" itemprop="dateModified" datetime="2019-08-22T00:29:19+08:00">2019-08-22</time>
               
             
           </span>
@@ -432,7 +429,14 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/源码/" itemprop="url" rel="index"><span itemprop="name">源码</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/面试/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
 
                 
                 
@@ -467,53 +471,43 @@
       
 
       
-        <h3 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h3><p>Java API中提供了一个创建线程池的工厂类<strong>Executors</strong>，但是在阿里Java规范中描述</p>
-<blockquote>
-<p>【强制】线程池不允许使用Executors去创建，而是通过ThreadPoolExecutor的方式，这 样的处理方式让写的同学更加明确线程池的运行规则，规避资源耗尽的风险。 说明:Executors 返回的线程池对象的弊端如下:<br>FixedThreadPool 和SingleThreadPool: nteger.MAX_VALUE，允许请求的队列长度为 Integer.MAX_VALUE，可能会堆积大量的请求，从而导致 OOM。<br>CachedThreadPool:<br>允许创建线程的数量为Integer.MAX_VALUE，可能会创建大量的线程，从而导致 OOM。</p>
-</blockquote>
-<a id="more"></a>
-<p>在分析出现OOM之前，我们先来学习一下ThreadPoolExecutor，</p>
-<h3 id="ThreadPoolExecutor学习"><a href="#ThreadPoolExecutor学习" class="headerlink" title="ThreadPoolExecutor学习"></a>ThreadPoolExecutor学习</h3><p>先看一下其构造函数，ThreadPoolExecutor有四个构造函数，我们选取最多参数的来分析各个参数的含义</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ThreadPoolExecutor</span><span class="params">(<span class="keyword">int</span> corePoolSize,</span></span></span><br><span class="line"><span class="function"><span class="params">                           <span class="keyword">int</span> maximumPoolSize,</span></span></span><br><span class="line"><span class="function"><span class="params">                           <span class="keyword">long</span> keepAliveTime,</span></span></span><br><span class="line"><span class="function"><span class="params">                           TimeUnit unit,</span></span></span><br><span class="line"><span class="function"><span class="params">                           BlockingQueue&lt;Runnable&gt; workQueue,</span></span></span><br><span class="line"><span class="function"><span class="params">                           ThreadFactory threadFactory,</span></span></span><br><span class="line"><span class="function"><span class="params">                           RejectedExecutionHandler handler)</span></span></span><br></pre></td></tr></table></figure>
+        <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>【<a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/" target="_blank" rel="noopener">链表合并题</a>】将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4</span><br><span class="line">输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</span><br></pre></td></tr></table></figure>
 
+<h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><p>Java定义的链表结构如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> val;</span><br><span class="line">  ListNode next;</span><br><span class="line">  ListNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"val="</span>+val;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h3><p>基本思路是，遍历两个链表，把小的元素先加入到新链表中</p>
+<p>看到题目首先想到的是挨个比较，依次将小的节点添加到新的列表中</p>
+<h3 id="初始化链表"><a href="#初始化链表" class="headerlink" title="初始化链表"></a>初始化链表</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/* 初始化两个有序链表 */</span></span><br><span class="line">ListNode one = <span class="keyword">new</span> ListNode(<span class="number">1</span>);</span><br><span class="line">ListNode two = <span class="keyword">new</span> ListNode(<span class="number">2</span>);</span><br><span class="line">ListNode four = <span class="keyword">new</span> ListNode(<span class="number">4</span>);</span><br><span class="line">one.next = two;</span><br><span class="line">two.next = four;</span><br><span class="line"></span><br><span class="line">ListNode one1 = <span class="keyword">new</span> ListNode(<span class="number">1</span>);</span><br><span class="line">ListNode two1 = <span class="keyword">new</span> ListNode(<span class="number">3</span>);</span><br><span class="line">ListNode four1 = <span class="keyword">new</span> ListNode(<span class="number">4</span>);</span><br><span class="line">one1.next = two1;</span><br><span class="line">two1.next = four1;</span><br></pre></td></tr></table></figure>
+
+<h3 id="实现优化"><a href="#实现优化" class="headerlink" title="实现优化"></a>实现优化</h3><p>使用递归，每次比较之后返回排序好的链表头</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 递归调用，每次调用返回排序好的链表头</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> l1</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> l2</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (l1 == <span class="keyword">null</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span> l2;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(l2 == <span class="keyword">null</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span> l1;</span><br><span class="line">      &#125;</span><br><span class="line">     <span class="keyword">if</span>(l1.val &lt; l2.val) &#123;</span><br><span class="line">         l1.next = mergeTwoLists(l1.next, l2);</span><br><span class="line">         <span class="keyword">return</span> l1;</span><br><span class="line"></span><br><span class="line">     &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">         l2.next = mergeTwoLists(l1, l2.next);</span><br><span class="line">         <span class="keyword">return</span> l2;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述递归可以难以理解，我们可以这样分析</p>
+<p>将我们的两个链表变成 如下形式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">l1:  1-&gt;2-&gt;3</span><br><span class="line">l2:  4-&gt;5-&gt;6</span><br></pre></td></tr></table></figure>
+
+<h5 id="执行过程"><a href="#执行过程" class="headerlink" title="执行过程"></a>执行过程</h5><p>下面步骤代表的每次递归的入参</p>
+<ol>
+<li>l1:   2-&gt;3      l2: 4-&gt;5-&gt;6</li>
+<li>l1:   3      l2: 4-&gt;5-&gt;6</li>
+<li>l1:   null      l2: 4-&gt;5-&gt;6 ,     此时结果返回的是  <strong>l2</strong>   整个链表，<strong>l1</strong> 为null 递归方法执行完</li>
+</ol>
+<h5 id="返回值过程"><a href="#返回值过程" class="headerlink" title="返回值过程"></a>返回值过程</h5><ol>
+<li>当  l1  (l1 = null) 执行完成之后，返回的  <strong>l2</strong>，即 <strong>l1.next = l2</strong></li>
+<li>回到上一个方法的调用，此时  <strong>l1=3</strong>  ,则  <strong>l1 = 3 -&gt; l2</strong></li>
+<li>继续执行，此时<strong>l1=2</strong>,  则  <strong>l1 = 2 -&gt; 3 -&gt; l2</strong></li>
+<li>继续执行，此时<strong>l1=1</strong>, 则 <strong>l1= 1 -&gt; 2 -&gt; 3 -&gt; l2</strong>， 返回结果</li>
+</ol>
+<p>###复杂度分析</p>
 <ul>
-<li><p><strong>corePoolSize</strong> :核心线程池大小，当在execute(Runnable)方法中提交新任务并且少于corePoolSize线程正在运行时，即使其他工作线程处于空闲状态，也会创建一个新线程来处理该请求。</p>
+<li><p>时间复杂度：O(n + m)O(n+m)。 因为每次调用递归都会去掉 l1 或者 l2 的头元素（直到至少有一个链表为空），函数 mergeTwoList 中只会遍历每个元素一次。所以，时间复杂度与合并后的链表长度为线性关系。</p>
 </li>
-<li><p><strong>maximumPoolSize</strong>：最大线程池大小，如果有多于corePoolSize但小于maximumPoolSize线程正在运行，则仅当队列已满时才会创建新线程。</p>
-</li>
-<li><p><strong>keepAliveTime</strong>：线程最大存活时间，如果线程池当前拥有超过corePoolSize的线程，那么多余的线程在空闲时间超过keepAliveTime时会被终止</p>
-</li>
-<li><p><strong>unit</strong>：时间单位</p>
-</li>
-<li><p><strong>workQueue</strong>：线程等待队列，如果当前线程池任务线程数量大于corePoolSize，执行器总是优先从线程队列中取一个空闲线程，而不是创建一个任务线程；如果当前线程池任务线程数量大于corePoolSize，且队列中无空闲任务线程，将会创建一个任务线程，直到超出maximumPoolSize，如果超时maximumPoolSize，则任务将会被拒绝。</p>
-</li>
-<li><p><strong>threadFactory</strong>：线程创建工厂,如果未另行指定，则使用Executors.defaultThreadFactory默认工厂</p>
-</li>
-<li><p><strong>handler</strong>：任务拒绝策略，拒绝任务有两种情况：1. 线程池已经被关闭；2. 任务队列已满且maximumPoolSizes已满；</p>
-<pre><code> AbortPolicy：默认策略，抛出RejectedExecutionException运行时异常；
- CallerRunsPolicy：这提供了一个简单的反馈控制机制，可以减慢提交新任务的速度；
- DiscardPolicy：直接丢弃新提交的任务；
-DiscardOldestPolicy：如果执行器没有关闭，队列头的任务将会被丢弃，然后执行器重新尝试执行任务（如果失败，则重复这一过程）；</code></pre><p>我们可以自己定义RejectedExecutionHandler，以适应特殊的容量和队列策略场景中。</p>
+<li><p>空间复杂度：O(n + m)O(n+m)。调用 mergeTwoLists 退出时 l1 和 l2 中每个元素都一定已经被遍历过了，所以 n + mn+m 个栈帧会消耗 O(n + m)O(n+m) 的空间。</p>
 </li>
 </ul>
-<p>下图是线程池任务流程图<br><img src="https://tvax1.sinaimg.cn/large/005BYqpggy1g4chjbqgnuj30od08jwet.jpg" alt="流程图" title="流程图"></p>
-<p>上面简单分析了ThreadPoolExecutor的内容，下面我们开始分析Executors创建线程池出现OOM的原因</p>
-<h3 id="OOM-产生原因"><a href="#OOM-产生原因" class="headerlink" title="OOM 产生原因"></a>OOM 产生原因</h3><p><strong>newFixedThreadPool</strong> 创建一个固定大小的线程池,看一下源码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ExecutorService <span class="title">newFixedThreadPool</span><span class="params">(<span class="keyword">int</span> nThreads)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ThreadPoolExecutor(nThreads, nThreads,</span><br><span class="line">                                      <span class="number">0L</span>, TimeUnit.MILLISECONDS,</span><br><span class="line">                                      <span class="keyword">new</span> LinkedBlockingQueue&lt;Runnable&gt;());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>从源码中看到corePoolSize与maximumPoolSize相等，keepAliveTime = 0 该参数默认对核心线程无效，前几个参数没有什么问题，主要是看一下最后一个workQueue，<strong>使用的是LinkedBlockingQueue</strong></p>
-<p><strong>LinkedBlockingQueue</strong>: 基于链表的阻塞队列,内部维持着一个数据缓冲队列（该队列由一个链表构成），当生产者往队列中放入一个数据时，队列会从生产者手中获取数据，并缓存在队列内部，而生产者立即返回；只有当队列缓冲区达到最大值缓存容量时（LinkedBlockingQueue可以通过构造函数指定该值），才会阻塞生产者队列，直到消费者从队列中消费掉一份数据，生产者线程会被唤醒，反之对于消费者这端的处理也基于同样的原理。</p>
-<p>我们看一下源码，不难发现，构造函数中使用的是<strong>Integer.MAX_VALUE</strong>来创建队列的容量，这样的话，如果生产者的速度一旦大于消费者的速度，也许还没有等到队列满阻塞产生，系统内存就有可能已被消耗殆尽了，就会出现OOM。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * Creates a &#123;<span class="doctag">@code</span> LinkedBlockingQueue&#125; with a capacity of</span></span><br><span class="line"><span class="comment">  * &#123;<span class="doctag">@link</span> Integer#MAX_VALUE&#125;.</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="title">LinkedBlockingQueue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">     <span class="keyword">this</span>(Integer.MAX_VALUE);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<p> <strong>SingleThreadPool</strong> :   SingleThreadPoo ，corePoolSize和maximumPoolSize都是1，即SingleThreadPool只有一个核心线程<br>出现OOM的原因和newFixedThreadPool一样,使用默认大小的LinkedBlockingQueue队列</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ExecutorService <span class="title">newSingleThreadExecutor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> FinalizableDelegatedExecutorService</span><br><span class="line">            (<span class="keyword">new</span> ThreadPoolExecutor(<span class="number">1</span>, <span class="number">1</span>,</span><br><span class="line">                                    <span class="number">0L</span>, TimeUnit.MILLISECONDS,</span><br><span class="line">                                    <span class="keyword">new</span> LinkedBlockingQueue&lt;Runnable&gt;()));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>newCachedThreadPool</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ExecutorService <span class="title">newCachedThreadPool</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ThreadPoolExecutor(<span class="number">0</span>, Integer.MAX_VALUE,</span><br><span class="line">                                  <span class="number">60L</span>, TimeUnit.SECONDS,</span><br><span class="line">                                  <span class="keyword">new</span> SynchronousQueue&lt;Runnable&gt;());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>corePoolSize = 0，maximumPoolSize = Integer.MAX_VALUE，即线程数量几乎无限制,导致OOM，keepAliveTime = 60s，线程空闲60s后自动结束。workQueue 为 SynchronousQueue 同步队列，这个队列类似于一个接力棒，入队出队必须同时传递，因为CachedThreadPool线程创建无限制，不会有队列等待，所以使用SynchronousQueue</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>按照阿里规范手动实现线程池的创建<br><img src="https://tvax1.sinaimg.cn/large/005BYqpggy1g4cihxk7i5j313k084dh9.jpg" alt="create" title="create"></p>
 
       
     </div>
@@ -546,9 +540,9 @@ DiscardOldestPolicy：如果执行器没有关闭，队列头的任务将会被�
         
         <div class="post-tags">
           
-            <a href="/tags/java/" rel="tag"># java</a>
+            <a href="/tags/算法/" rel="tag"># 算法</a>
           
-            <a href="/tags/线程/" rel="tag"># 线程</a>
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
           
         </div>
       
@@ -561,8 +555,8 @@ DiscardOldestPolicy：如果执行器没有关闭，队列头的任务将会被�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/18/基于RESP实现Java-redis客户端/" rel="next" title="基于RESP实现Java-redis客户端">
-                <i class="fa fa-chevron-left"></i> 基于RESP实现Java-redis客户端
+              <a href="/2019/08/20/探究String.intern()方法/" rel="next" title="《深入理解Java虚拟机》 探究String.intern()方法">
+                <i class="fa fa-chevron-left"></i> 《深入理解Java虚拟机》 探究String.intern()方法
               </a>
             
           </div>
@@ -570,10 +564,6 @@ DiscardOldestPolicy：如果执行器没有关闭，队列头的任务将会被�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/20/ThreadLocal-使用和源码分析/" rel="prev" title="ThreadLocal 使用和源码分析">
-                ThreadLocal 使用和源码分析 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -780,7 +770,7 @@ DiscardOldestPolicy：如果执行器没有关闭，队列头的任务将会被�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#导读"><span class="nav-number">1.</span> <span class="nav-text">导读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ThreadPoolExecutor学习"><span class="nav-number">2.</span> <span class="nav-text">ThreadPoolExecutor学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OOM-产生原因"><span class="nav-number">3.</span> <span class="nav-text">OOM 产生原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构"><span class="nav-number">2.</span> <span class="nav-text">数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现思路"><span class="nav-number">3.</span> <span class="nav-text">实现思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化链表"><span class="nav-number">4.</span> <span class="nav-text">初始化链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现优化"><span class="nav-number">5.</span> <span class="nav-text">实现优化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#执行过程"><span class="nav-number">5.0.1.</span> <span class="nav-text">执行过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#返回值过程"><span class="nav-number">5.0.2.</span> <span class="nav-text">返回值过程</span></a></li></ol></li></ol></div>
             
 
           </div>
