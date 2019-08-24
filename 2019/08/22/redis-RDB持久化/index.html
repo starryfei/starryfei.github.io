@@ -96,16 +96,17 @@
 
 
 
-  <meta name="description" content="喵星人学习记录">
-<meta property="og:type" content="website">
-<meta property="og:title" content="喵星人🐱">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+  <meta name="description" content="概述Redis 是一个存放在内存的键值对数据库服务器，服务器中包含任意个非空数据库，每个非空数据库又可以包含任意个键值对，为了保证服务器进程退出后数据不会消失，就需要将数据库持久化到磁盘里面，redis提供了RDB/AOF持久化功能。 RDB文件结构RDB文件是一个经过压缩的二进制文件，下面说一下结构            REDIS Db_version Databases EOF Check_">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis RDB持久化">
+<meta property="og:url" content="http://yoursite.com/2019/08/22/Redis-RDB持久化/index.html">
 <meta property="og:site_name" content="喵星人🐱">
-<meta property="og:description" content="喵星人学习记录">
+<meta property="og:description" content="概述Redis 是一个存放在内存的键值对数据库服务器，服务器中包含任意个非空数据库，每个非空数据库又可以包含任意个键值对，为了保证服务器进程退出后数据不会消失，就需要将数据库持久化到磁盘里面，redis提供了RDB/AOF持久化功能。 RDB文件结构RDB文件是一个经过压缩的二进制文件，下面说一下结构            REDIS Db_version Databases EOF Check_">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-24T16:21:25.232Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="喵星人🐱">
-<meta name="twitter:description" content="喵星人学习记录">
+<meta name="twitter:title" content="redis RDB持久化">
+<meta name="twitter:description" content="概述Redis 是一个存放在内存的键值对数据库服务器，服务器中包含任意个非空数据库，每个非空数据库又可以包含任意个键值对，为了保证服务器进程退出后数据不会消失，就需要将数据库持久化到磁盘里面，redis提供了RDB/AOF持久化功能。 RDB文件结构RDB文件是一个经过压缩的二进制文件，下面说一下结构            REDIS Db_version Databases EOF Check_">
 
 
 
@@ -113,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/archives/2019/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/22/Redis-RDB持久化/">
 
 
 
@@ -123,7 +124,7 @@
   };
 </script>
 
-  <title>Archive | 喵星人🐱</title>
+  <title>redis RDB持久化 | 喵星人🐱</title>
   
 
 
@@ -171,7 +172,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -281,7 +282,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -330,423 +331,311 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/22/Redis-RDB持久化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="starryfei">
+      <meta itemprop="description" content="喵星人学习记录">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/16641113?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="喵星人🐱">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">redis RDB持久化
+
+              
+            
+          </h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-08-22 23:11:39" itemprop="dateCreated datePublished" datetime="2019-08-22T23:11:39+08:00">2019-08-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-08-25 00:21:25" itemprop="dateModified" datetime="2019-08-25T00:21:25+08:00">2019-08-25</time>
+              
+            
+          </span>
+
           
-        
-        Um..! 16 posts in total. Keep on posting.
-      </span>
-      
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/22/Redis-AOF持久化/" itemprop="url">
             
-              <span itemprop="name">Redis AOF持久化</span>
             
-          </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-22T23:11:57+08:00" content="2019-08-22">
-          08-22
-        </time>
-      </div>
+          
+          
 
-    </header>
-  </article>
+          
 
+          
 
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/22/Redis-RDB持久化/" itemprop="url">
-            
-              <span itemprop="name">redis RDB持久化</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-22T23:11:39+08:00" content="2019-08-22">
-          08-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/22/整数反转/" itemprop="url">
-            
-              <span itemprop="name">整数反转</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-22T22:53:56+08:00" content="2019-08-22">
-          08-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>Redis 是一个存放在内存的键值对数据库服务器，服务器中包含任意个非空数据库，每个非空数据库又可以包含任意个键值对，为了保证服务器进程退出后数据不会消失，就需要将数据库持久化到磁盘里面，redis提供了RDB/AOF持久化功能。</p>
+<h3 id="RDB文件结构"><a href="#RDB文件结构" class="headerlink" title="RDB文件结构"></a>RDB文件结构</h3><p>RDB文件是一个经过压缩的二进制文件，下面说一下结构</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>REDIS</td>
+<td>Db_version</td>
+<td>Databases</td>
+<td>EOF</td>
+<td>Check_sum</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>REDIS:  RDB文件的开头，长度5个字节，不带 ‘/0’ ，程序在载入文件的时候可以快速检查是否是RDB文件</p>
+</li>
+<li><p>db_version:  RDB文件的版本号，长度4个字节</p>
+</li>
+<li><p>Databases:  包含0到多个数据库，以及各个数据库中的键值对数据</p>
+<ol>
+<li>如果数据库为空，这部分的值也为空，长度为0个字节</li>
+<li>若非空，根据存储的键值对数量，类型和内容的不同，长度也不唯一</li>
+</ol>
+</li>
+<li><p>EOF： 常量标志RDB文件的正文内容结束，长度为1个字节，程序读到这个字段，代表数据库载入完毕</p>
+</li>
+<li><p>check_sum: 8字节的无符号整数，保存一个校验和，这个校验和是根据前四个部分的内容计算得出的，服务器在载入RDB文件时，会根据载入数据计算出校验和与check_sum进行对比，检测RDB文件的是否损坏</p>
+</li>
+</ul>
+<p>示例：</p>
+<p>databases为空的RDB文件</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>REDIS</td>
+<td>0006</td>
+<td>EOF</td>
+<td>61616166111</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>database 0/3不为空的RDB文件</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>REDIS</td>
+<td>0006</td>
+<td>database 0</td>
+<td>database 3</td>
+<td>EOF</td>
+<td>61616166111</td>
+</tr>
+</tbody></table>
+<h4 id="database"><a href="#database" class="headerlink" title="database"></a>database</h4><p>每个非空的数据在RDB文件中都可以保存如下结构</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SELECTDB</td>
+<td>db_number</td>
+<td>key_value_paris</td>
+</tr>
+</tbody></table>
+<ul>
+<li>SELECTDB： 长度为 1 字节，标志接下来要读的是数据库号</li>
+<li>db_number: 数据库的号码，根据号码的不同，长度分为 1/2/5字节</li>
+<li>key_value_paris： 保存数据库文件中的所有键值对数据，包括过期时间。结构可以细分为：EXPIRETIME_MS,  ms,  TYPE，key, value<ol>
+<li>EXPIRETIME_MS: 长度1个字节，告诉程序接下来要读的是以ms为单位的过期时间</li>
+<li>ms: 8字节的带符号整数，ms单位</li>
+<li>TYPE：长度1个字节，类似STRING/LIST/SET/HASH/ZIPLIST..代表对象类型或者底层编码</li>
+<li>key/value: 保存键值对的键对象和值对象</li>
+</ol>
+</li>
+</ul>
+<h3 id="RDB文件生成"><a href="#RDB文件生成" class="headerlink" title="RDB文件生成"></a>RDB文件生成</h3><p>在redis中有两个命令可以触发RDB文件的生成， <strong>SAVE</strong> / <strong>BGSAVE</strong></p>
+<ul>
+<li>SAVE:   该命令会阻塞Redis服务器进程，直到RDB文件创建完成为止，在服务器阻塞期间，不能处理任何命令</li>
+<li>BGSAVE： 该命令会派生一个子进程，然后由子进程负责创建RDB文件，服务器进程继续处理命令请求，在BGSAVE阶段，服务器禁止SAVE命令和BGSAVE命令同时进行，防止产生竞争条件，同时在BGSAVE阶段，客户端发送的BGSAVE命令也会被服务器拒绝</li>
+</ul>
+<p>RDB文件的载入是在服务器启动的时候自动执行的，所以Redis 没有专门的用于载入RDB文件的命令，服务器启动检测到RDB文件的存在，就会自动载入，</p>
+<p>注意：</p>
+<p><strong>如果服务器开启了AOF持久化功能，服务器优先使用AOF文件来还原数据库状态</strong></p>
+<h4 id="自动间隔保存"><a href="#自动间隔保存" class="headerlink" title="自动间隔保存"></a>自动间隔保存</h4><p>因为BGSAVE在不阻塞服务器进程的情况下执行，所以Redis 允许用户通过设置服务器配置的save选项，让服务器每隔一段时间自动执行一次BGSAVE命令，可以设置多个保存条件，只要有一个条件满足就会触发BGSAVE命令</p>
+<p>例子：</p>
+<ul>
+<li>save   900 1  ：服务器在900s内对数据库进行了至少一次修改</li>
+<li>save  300 10 ：服务器在300s内对数据库进行了至少10次修改</li>
+<li>save  60  10000：服务器在60s内对数据库进行了至少10000次修改</li>
+</ul>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/21/有序链表合并/" itemprop="url">
-            
-              <span itemprop="name">有序链表合并</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-21T23:36:58+08:00" content="2019-08-21">
-          08-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/20/探究String.intern()方法/" itemprop="url">
-            
-              <span itemprop="name">《深入理解Java虚拟机》 探究String.intern()方法</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-20T23:03:12+08:00" content="2019-08-20">
-          08-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/07/24/mysql-索引/" itemprop="url">
-            
-              <span itemprop="name">mysql 索引</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-24T22:39:00+08:00" content="2019-07-24">
-          07-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/07/24/mysql-事务/" itemprop="url">
-            
-              <span itemprop="name">mysql 事务</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-24T22:38:46+08:00" content="2019-07-24">
-          07-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/07/19/Mac下hive-2-3-5-安装配置/" itemprop="url">
-            
-              <span itemprop="name">Mac下hive-2.3.5 安装配置</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-19T17:51:04+08:00" content="2019-07-19">
-          07-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/07/19/mysql-多表连接/" itemprop="url">
-            
-              <span itemprop="name">mysql 多表连接</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-19T15:27:05+08:00" content="2019-07-19">
-          07-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/07/14/hadoop-多文件连接/" itemprop="url">
-            
-              <span itemprop="name">hadoop 多文件连接</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-14T14:46:39+08:00" content="2019-07-14">
-          07-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/uploads/qrcod.jpg" alt="starryfei wechat" style="width: 200px; max-width: 100%;">
+  <div>欢迎关注我的微信公众号</div>
+</div>
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/22/整数反转/" rel="next" title="整数反转">
+                <i class="fa fa-chevron-left"></i> 整数反转
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/22/Redis-AOF持久化/" rel="prev" title="Redis AOF持久化">
+                Redis AOF持久化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><a class="extend next" rel="next" href="/archives/2019/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
+  </article>
 
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -766,8 +655,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -916,6 +814,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDB文件结构"><span class="nav-number">2.</span> <span class="nav-text">RDB文件结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#database"><span class="nav-number">2.1.</span> <span class="nav-text">database</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDB文件生成"><span class="nav-number">3.</span> <span class="nav-text">RDB文件生成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自动间隔保存"><span class="nav-number">3.1.</span> <span class="nav-text">自动间隔保存</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -1045,6 +960,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
 
   
 
@@ -1060,6 +979,8 @@
 
   
 
+
+  
 
 
   
