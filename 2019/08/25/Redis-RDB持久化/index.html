@@ -97,15 +97,16 @@
 
 
   <meta name="description" content="概述Redis 是一个存放在内存的键值对数据库服务器，服务器中包含任意个非空数据库，每个非空数据库又可以包含任意个键值对，为了保证服务器进程退出后数据不会消失，就需要将数据库持久化到磁盘里面，redis提供了RDB/AOF持久化功能。 RDB文件结构RDB文件是一个经过压缩的二进制文件，下面说一下结构            REDIS Db_version Databases EOF Check_">
+<meta name="keywords" content="redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="redis RDB持久化">
-<meta property="og:url" content="http://yoursite.com/2019/08/22/Redis-RDB持久化/index.html">
+<meta property="og:title" content="Redis RDB持久化">
+<meta property="og:url" content="http://yoursite.com/2019/08/25/Redis-RDB持久化/index.html">
 <meta property="og:site_name" content="喵星人🐱">
 <meta property="og:description" content="概述Redis 是一个存放在内存的键值对数据库服务器，服务器中包含任意个非空数据库，每个非空数据库又可以包含任意个键值对，为了保证服务器进程退出后数据不会消失，就需要将数据库持久化到磁盘里面，redis提供了RDB/AOF持久化功能。 RDB文件结构RDB文件是一个经过压缩的二进制文件，下面说一下结构            REDIS Db_version Databases EOF Check_">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-24T16:21:25.232Z">
+<meta property="og:updated_time" content="2019-08-25T01:42:28.961Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="redis RDB持久化">
+<meta name="twitter:title" content="Redis RDB持久化">
 <meta name="twitter:description" content="概述Redis 是一个存放在内存的键值对数据库服务器，服务器中包含任意个非空数据库，每个非空数据库又可以包含任意个键值对，为了保证服务器进程退出后数据不会消失，就需要将数据库持久化到磁盘里面，redis提供了RDB/AOF持久化功能。 RDB文件结构RDB文件是一个经过压缩的二进制文件，下面说一下结构            REDIS Db_version Databases EOF Check_">
 
 
@@ -114,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/08/22/Redis-RDB持久化/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/25/Redis-RDB持久化/">
 
 
 
@@ -124,7 +125,7 @@
   };
 </script>
 
-  <title>redis RDB持久化 | 喵星人🐱</title>
+  <title>Redis RDB持久化 | 喵星人🐱</title>
   
 
 
@@ -351,7 +352,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/22/Redis-RDB持久化/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/25/Redis-RDB持久化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="starryfei">
@@ -368,7 +369,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">redis RDB持久化
+          <h1 class="post-title" itemprop="name headline">Redis RDB持久化
 
               
             
@@ -394,28 +395,34 @@
                 
               
 
-              <time title="Created: 2019-08-22 23:11:39" itemprop="dateCreated datePublished" datetime="2019-08-22T23:11:39+08:00">2019-08-22</time>
+              <time title="Created: 2019-08-25 09:41:47 / Modified: 09:42:28" itemprop="dateCreated datePublished" datetime="2019-08-25T09:41:47+08:00">2019-08-25</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-08-25 00:21:25" itemprop="dateModified" datetime="2019-08-25T00:21:25+08:00">2019-08-25</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/读书笔记/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -466,20 +473,15 @@
 </tr>
 </tbody></table>
 <ul>
-<li><p>REDIS:  RDB文件的开头，长度5个字节，不带 ‘/0’ ，程序在载入文件的时候可以快速检查是否是RDB文件</p>
-</li>
-<li><p>db_version:  RDB文件的版本号，长度4个字节</p>
-</li>
-<li><p>Databases:  包含0到多个数据库，以及各个数据库中的键值对数据</p>
-<ol>
+<li>REDIS:  RDB文件的开头，长度5个字节，不带 ‘/0’ ，程序在载入文件的时候可以快速检查是否是RDB文件</li>
+<li>db_version:  RDB文件的版本号，长度4个字节</li>
+<li>Databases:  包含0到多个数据库，以及各个数据库中的键值对数据<ol>
 <li>如果数据库为空，这部分的值也为空，长度为0个字节</li>
 <li>若非空，根据存储的键值对数量，类型和内容的不同，长度也不唯一</li>
 </ol>
 </li>
-<li><p>EOF： 常量标志RDB文件的正文内容结束，长度为1个字节，程序读到这个字段，代表数据库载入完毕</p>
-</li>
-<li><p>check_sum: 8字节的无符号整数，保存一个校验和，这个校验和是根据前四个部分的内容计算得出的，服务器在载入RDB文件时，会根据载入数据计算出校验和与check_sum进行对比，检测RDB文件的是否损坏</p>
-</li>
+<li>EOF： 常量标志RDB文件的正文内容结束，长度为1个字节，程序读到这个字段，代表数据库载入完毕</li>
+<li>check_sum: 8字节的无符号整数，保存一个校验和，这个校验和是根据前四个部分的内容计算得出的，服务器在载入RDB文件时，会根据载入数据计算出校验和与check_sum进行对比，检测RDB文件的是否损坏</li>
 </ul>
 <p>示例：</p>
 <p>databases为空的RDB文件</p>
@@ -590,6 +592,15 @@
 
     <footer class="post-footer">
       
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/redis/" rel="tag"># redis</a>
+          
+        </div>
+      
 
       
       
@@ -599,8 +610,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/22/整数反转/" rel="next" title="整数反转">
-                <i class="fa fa-chevron-left"></i> 整数反转
+              <a href="/2019/08/22/Redis-AOF持久化/" rel="next" title="Redis AOF持久化">
+                <i class="fa fa-chevron-left"></i> Redis AOF持久化
               </a>
             
           </div>
@@ -608,10 +619,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/22/Redis-AOF持久化/" rel="prev" title="Redis AOF持久化">
-                Redis AOF持久化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -698,10 +705,6 @@
                     
                   
                     
-                    
-                      
-                    
-                      
                     
                       
                     
